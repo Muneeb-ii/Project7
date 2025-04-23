@@ -202,4 +202,21 @@ public class Heap<T> implements PriorityQueue<T>{
         bubbleDown(1);
         return root;
     }
+
+    /**
+     * Updates the priority of the given item in the heap and maintains the heap property.
+     * 
+     * @param item the item whose priority has been updated
+     */
+    public void updatePriority(T item){
+        // Find the index of the item in the heap
+        for(int i = 1; i < heap.size(); i++){
+            if(heap.get(i).equals(item)){
+                // Bubble up and down the item to maintain the heap property
+                bubbleUp(i);
+                bubbleDown(i);
+                return;
+            }
+        }
+    }
 }
