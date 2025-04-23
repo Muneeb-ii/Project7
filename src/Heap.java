@@ -78,4 +78,51 @@ public class Heap<T> implements PriorityQueue<T>{
         if(idx==1) return -1;
         return idx/2;
     }
+
+    /**
+     * Bubbles up the element at the given index in the heap to maintain the heap property.
+     * 
+     * @param idx the index of the element to bubble up
+     */
+    private void bubbleUp(int idx){
+        int parentIdx = getParentIdx(idx);
+        if(parentIdx!=-1){
+            if(comparator.compare(heap.get(idx), heap.get(parentIdx))<0){
+                this.swap(idx,parentIdx);
+                bubbleUp(parentIdx);
+            }
+        }
+        
+    }
+    
+    /**
+     * Bubbles down the element at the given index in the heap to maintain the heap property.
+     * 
+     * @param idx the index of the element to bubble down
+     */
+    private void bubbleDown(int idx){
+        int leftChildIdx = getLeftChildIdx(idx);
+        int rightChildIdx = getRightChildIdx(idx);
+        int n = heap.size();
+
+        // if the left child index is out of bounds, return
+        if(leftChildIdx>=n) return;
+
+        int swapIdx = leftChildIdx;
+
+        // if the right child index is in bounds and the left child is greater than the right child
+        // set the swap index to the right child index
+        if(rightChildIdx<n){
+            if(comparator.compare(heap.get(leftChildIdx), heap.get(rightChildIdx))>0){
+                swapIdx = rightChildIdx;
+            }
+        }
+        
+        // If the element at the current index is greater than the element at the swap index swap the two elements
+        // and call bubbleDown on the swap index
+        if(comparator.compare(heap.get(idx), heap.get(swapIdx))>0){
+            this.swap(idx, swapIdx);
+            bubbleDown(swapIdx);
+        }
+    }
 }
