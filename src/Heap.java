@@ -186,4 +186,20 @@ public class Heap<T> implements PriorityQueue<T>{
         heap.add(item);
         bubbleUp(heap.size()-1);
     }
+
+    /**
+     * Removes and returns the item of greatest priority in the heap (the root) and maintains the heap property.
+     * 
+     * @return the item of greatest priority in the heap
+     */
+    public T poll(){
+        if(heap.size() == 1){
+            return null;
+        }
+        T root = heap.get(1);
+        heap.set(1, heap.get(heap.size()-1));
+        heap.remove(heap.size()-1);
+        bubbleDown(1);
+        return root;
+    }
 }
