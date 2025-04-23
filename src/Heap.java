@@ -164,4 +164,16 @@ public class Heap<T> implements PriorityQueue<T>{
     public int size() {
         return heap.size() - 1;
     }
+
+    /**
+     * Returns the item of greatest priority in the heap (the root).
+     * 
+     * @return the item of greatest priority in the heap
+     */
+    public T peek(){
+        if(heap.size() == 1){
+            return null;
+        }
+        return heap.get(1);
+    }
 }
