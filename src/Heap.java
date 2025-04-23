@@ -25,6 +25,7 @@ public class Heap<T> implements PriorityQueue<T>{
             this.comparator = comparator;
         }
         this.heap = new ArrayList<>();
+        this.heap.add(null); // index 0 is unused
     }
 
     /**
