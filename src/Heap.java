@@ -176,4 +176,14 @@ public class Heap<T> implements PriorityQueue<T>{
         }
         return heap.get(1);
     }
+
+    /**
+     * Adds the given item to the heap and maintains the heap property.
+     * 
+     * @param item the item to add to the heap
+     */
+    public void offer(T item) {
+        heap.add(item);
+        bubbleUp(heap.size()-1);
+    }
 }
