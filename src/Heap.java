@@ -19,16 +19,12 @@ public class Heap<T> implements PriorityQueue<T>{
      */
     public Heap(Comparator<T> comparator, boolean maxHeap){
         if(maxHeap){
-            this.comparator = new Comparator<T>(){
-                @Override
-                public int compare(T o1, T o2) {
-                    return ((Comparable<T>) o2).compareTo(o1);
-                }
-            };
+            this.comparator = comparator.reversed();
         }
         else{
             this.comparator = comparator;
         }
+        this.heap = new ArrayList<>();
     }
 
     /**
