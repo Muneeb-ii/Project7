@@ -155,4 +155,13 @@ public class Heap<T> implements PriorityQueue<T>{
         String myself = "\t".repeat(depth) + this.heap.get( idx ) + "\n";
         return right + myself + left;
     }
+
+    /**
+     * Returns the number of items in the heap.
+     * 
+     * @return the number of items in the heap
+     */
+    public int size() {
+        return heap.size() - 1;
+    }
 }
