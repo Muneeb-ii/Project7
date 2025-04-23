@@ -35,4 +35,16 @@ public class Heap<T> implements PriorityQueue<T>{
     public Heap(Comparator<T> comparator){
         this(comparator, false);
     }
+
+    /**
+     * Swaps the elements at the given indices in the heap.
+     * 
+     * @param idx1  index of the first element to swap
+     * @param idx2  index of the second element to swap
+     */
+    private void swap(int idx1, int idx2){
+        T temp = heap.get(idx1);
+        heap.set(idx1, heap.get(idx2));
+        heap.set(idx2, temp);
+    }
 }
