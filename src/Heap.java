@@ -47,4 +47,35 @@ public class Heap<T> implements PriorityQueue<T>{
         heap.set(idx1, heap.get(idx2));
         heap.set(idx2, temp);
     }
+
+    /**
+     * Returns the index of the left child of the element at the given index.
+     * 
+     * @param idx the index of the parent element
+     * @return the index of the left child
+     */
+    private int getLeftChildIdx(int idx){
+        return 2*idx;
+    }
+
+    /**
+     * Returns the index of the right child of the element at the given index.
+     * 
+     * @param idx the index of the parent element
+     * @return the index of the right child
+     */
+    private int getRightChildIdx(int idx){
+        return 2*idx + 1;
+    }
+
+    /**
+     * Returns the index of the parent of the element at the given index.
+     * 
+     * @param idx the index of the child element
+     * @return the index of the parent
+     */
+    private int getParentIdx(int idx){
+        if(idx==1) return -1;
+        return idx/2;
+    }
 }
