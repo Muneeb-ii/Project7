@@ -125,5 +125,34 @@ public class Heap<T> implements PriorityQueue<T>{
             this.swap(idx, swapIdx);
             bubbleDown(swapIdx);
         }
+
+    }
+
+    /**
+     * Returns the string representation of the heap.
+     * 
+     * @return the string representation of the heap
+     */
+    public String toString() {
+        int depth = 0 ;
+        return toString( 1 , depth );
+    }
+
+    /**
+     * Helper method to convert the heap to a string representation.
+     * 
+     * @param idx   the index of the element to convert to a string
+     * @param depth the depth of the element in the heap
+     * @return the string representation of the heap
+     */
+    private String toString( int idx , int depth ) {
+        if (idx >= heap.size() ) {
+            return "";
+        }
+        String left = toString(getLeftChildIdx( idx ) , depth + 1 );
+        String right = toString(getRightChildIdx( idx ) , depth + 1 );
+
+        String myself = "\t".repeat(depth) + this.heap.get( idx ) + "\n";
+        return right + myself + left;
     }
 }
