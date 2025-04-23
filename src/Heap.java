@@ -6,5 +6,6 @@
  */
 
 public class Heap<T> implements PriorityQueue<T>{
-
+    private Comparator<T> comparator;
+    private ArrayList<T> heap;
 }
