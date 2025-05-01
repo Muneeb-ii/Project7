@@ -50,4 +50,25 @@ abstract class AbstractMazeSearch {
      * @return the next Cell to explore
      */
     public abstract Cell findNextCell(Cell cur, Cell target, boolean isDFS, int depth);
+
+    /**
+     * Adds the given Cell to the data structure.
+     * 
+     * @param next the Cell to add
+     */
+    public abstract void addCell(Cell next);
+
+    /**
+     * Updates the given Cell priority in the priority queue (used only in A* search).
+     * 
+     * @param next the Cell to update
+     */
+    public abstract void updateCell(Cell next);
+
+    /**
+     * Returns the number of cells remaining in the data structure.
+     * 
+     * @return the number of cells remaining in the data structure
+     */
+    public abstract int numRemainingCells();
 }
