@@ -1,3 +1,10 @@
+/**
+ * Author: (code provided by professor)
+ * 
+ * Purpose of class: A class that represents a maze. The maze is made up of cells
+ * 
+ */
+
 import java.awt.Graphics;
 import java.util.Iterator;
 import java.util.Random;

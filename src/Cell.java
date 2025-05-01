@@ -1,3 +1,10 @@
+/**
+ * Author: (code provided by professor)
+ * 
+ * Purpose of class: A class that represents a cell in a maze. Each cell can be either
+ * free or an obstacle. The cell also keeps track of its previous cell in the path.
+ */
+
 import java.awt.Color;
 import java.awt.Graphics;
 
