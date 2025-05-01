@@ -47,6 +47,12 @@ public class Maze implements Iterable<Cell> {
     private double density;
 
     /**
+     * The starting and ending Cells of this Maze. These are the Cells which
+     * represent the start and end of the path through the maze.
+     */
+    private Cell start, end;
+
+    /**
      * The 2-D array of Cells making up this Maze.
      */
     private Cell[][] landscape;
