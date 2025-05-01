@@ -54,6 +54,7 @@ public class Cell {
      * @param prev the previous Cell of this one.
      */
     public void setPrev(Cell prev) {
+        this.visited = true;
         this.prev = prev;
     }
 
@@ -70,7 +71,8 @@ public class Cell {
      * Resets this Cell back to its initial state (which just sets prev to null)
      */
     public void reset() {
-        setPrev(null);
+        this.visited = false;
+        this.prev = null;
     }
 
     /**
@@ -100,7 +102,7 @@ public class Cell {
      *
      * @return true if this Cell has been visited, false otherwise.
      */
-    public boolean isVisited() {
+    public boolean visited() {
         return visited;
     }
 
