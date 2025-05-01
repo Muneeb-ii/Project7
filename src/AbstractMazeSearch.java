@@ -6,7 +6,7 @@
  * 
 */
 
-public class AbstractMazeSearch {
+abstract class AbstractMazeSearch {
     
     /**
      * Maze object that is used to represent the maze
@@ -27,4 +27,27 @@ public class AbstractMazeSearch {
      * The current cell being explored
      */
     private Cell cur;
+
+    /**
+     * Constructor for the AbstractMazeSearch class.
+     * 
+     * @param maze
+     */
+    public AbstractMazeSearch(Maze maze){
+        this.maze = maze;
+        this.start = null;
+        this.target = null;
+        this.cur = null;
+    }
+
+    /**
+     * Returns the next Cell to explore and removes it from the data structure.
+     *  
+     * @param cur    the current Cell being explored
+     * @param target the target Cell
+     * @param isDFS  true if the search is a depth-first search, false if it is a breadth-first
+     * @param depth  the depth of the search
+     * @return the next Cell to explore
+     */
+    public abstract Cell findNextCell(Cell cur, Cell target, boolean isDFS, int depth);
 }
