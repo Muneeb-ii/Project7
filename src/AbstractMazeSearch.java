@@ -135,9 +135,57 @@ abstract class AbstractMazeSearch {
     public LinkedList<Cell> traceback(Cell cell){
         LinkedList<Cell> path = new LinkedList<Cell>();
         while (cell!=null){
-            path.addFirst(cell);
+            path.add(cell); // add the cell to the path
             cell = cell.getPrev();
         }
         return path;
+    }
+
+    /**
+     * Searches the maze for the target cell using the given starting cell.
+     * 
+     * @param start  the starting cell
+     * @param target the target cell
+     * @return the path from the starting cell to the target cell if it exists, null otherwise
+     */
+    public LinkedList<Cell> search(Cell start, Cell target){
+        // Set the starting and target cells
+        this.start = start;
+        this.target = target;
+        
+        setCur(start);
+
+        // This line is just to make the drawing work correctly
+        start.setPrev(start);
+
+        addCell(start);
+
+        // While there are still cells to explore
+        while(numRemainingCells()>0){
+            // Set the current cell to the next cell to explore
+            setCur(findNextCell(cur, target, false, 0));
+
+            for(Cell neighbor: maze.getNeighbors(cur)){
+                // if the neighbor has not been visited set its previous cell to the current cell
+                // and add it to the data structure
+                if (neighbor.getPrev() == null){
+                    neighbor.setPrev(cur);
+                    addCell(neighbor);
+                }
+                // if the neighbor has been visited and the we find a shorter path to it
+                // set its previous cell to the current cell and update its position in the data structure
+                else if (traceback(neighbor).size()>traceback(cur).size()){
+                    neighbor.setPrev(cur);
+                    updateCell(neighbor);
+                }
+
+                // if the neighbor is the target cell, we found the target
+                if(neighbor == target){
+                    return traceback(target); // we found the target, we're done
+                }
+            }
+        }
+
+        return null; // we couldn't find the target, but we're done
     }
 }
