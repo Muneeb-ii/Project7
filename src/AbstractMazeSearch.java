@@ -42,14 +42,10 @@ abstract class AbstractMazeSearch {
 
     /**
      * Returns the next Cell to explore and removes it from the data structure.
-     *  
-     * @param cur    the current Cell being explored
-     * @param target the target Cell
-     * @param isDFS  true if the search is a depth-first search, false if it is a breadth-first
-     * @param depth  the depth of the search
+     * 
      * @return the next Cell to explore
      */
-    public abstract Cell findNextCell(Cell cur, Cell target, boolean isDFS, int depth);
+    public abstract Cell findNextCell();
 
     /**
      * Adds the given Cell to the data structure.
@@ -163,7 +159,7 @@ abstract class AbstractMazeSearch {
         // While there are still cells to explore
         while(numRemainingCells()>0){
             // Set the current cell to the next cell to explore
-            setCur(findNextCell(cur, target, false, 0));
+            setCur(findNextCell());
 
             for(Cell neighbor: maze.getNeighbors(cur)){
                 // if the neighbor has not been visited set its previous cell to the current cell
@@ -181,7 +177,7 @@ abstract class AbstractMazeSearch {
 
                 // if the neighbor is the target cell, we found the target
                 if(neighbor == target){
-                    return traceback(target); // we found the target, we're done
+                    return traceback(target);
                 }
             }
         }
