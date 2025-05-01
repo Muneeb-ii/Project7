@@ -125,4 +125,19 @@ abstract class AbstractMazeSearch {
         this.target = null;
         this.cur = null;
     }
+
+    /**
+     * Returns the path from the starting cell to the target cell if it exists.
+     * 
+     * @param cell the target cell
+     * @return the path from the starting cell to the target cell
+     */
+    public LinkedList<Cell> traceback(Cell cell){
+        LinkedList<Cell> path = new LinkedList<Cell>();
+        while (cell!=null){
+            path.addFirst(cell);
+            cell = cell.getPrev();
+        }
+        return path;
+    }
 }
