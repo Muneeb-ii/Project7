@@ -122,6 +122,24 @@ public class Maze implements Iterable<Cell> {
     }
 
     /**
+     * Returns the starting Cell of this Maze.
+     * 
+     * @return the starting Cell of this Maze.
+     */
+    public Cell getStart() {
+        return start;
+    }
+
+    /**
+     * Returns the target Cell of this Maze.
+     * 
+     * @return the target Cell of this Maze.
+     */
+    public Cell getTarget() {
+        return target;
+    }
+
+    /**
      * Returns the Cell at the specified row and column in the Maze.
      * 
      * @param row the row
