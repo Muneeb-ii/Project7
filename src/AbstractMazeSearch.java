@@ -116,4 +116,13 @@ abstract class AbstractMazeSearch {
     public void setCur(Cell cur) {
         this.cur = cur;
     }
+
+    /**
+     * Resets the search by setting the starting and target cells to null.
+     */
+    public void reset(){
+        this.start = null;
+        this.target = null;
+        this.cur = null;
+    }
 }
