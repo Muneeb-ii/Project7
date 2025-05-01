@@ -6,7 +6,7 @@
  * 
 */
 
-public class AbstractMazeClass {
+public class AbstractMazeSearch {
     
     /**
      * Maze object that is used to represent the maze
