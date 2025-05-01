@@ -71,4 +71,49 @@ abstract class AbstractMazeSearch {
      * @return the number of cells remaining in the data structure
      */
     public abstract int numRemainingCells();
+
+    /**
+     * Return the maze object.
+     * 
+     * @return the maze object 
+     */
+    public Maze getMaze() {
+        return maze;
+    }
+
+    /**
+     * Returns the starting Cell of the maze.
+     * 
+     * @return the starting Cell of the maze
+     */
+    public Cell getStart() {
+        return start;
+    }
+
+    /**
+     * Returns the target Cell of the maze.
+     * 
+     * @return the target Cell of the maze
+     */
+    public Cell getTarget() {
+        return target;
+    }
+
+    /**
+     * Returns the current Cell being explored.
+     * 
+     * @return the current Cell being explored
+     */
+    public Cell getCur() {
+        return cur;
+    }
+
+    /**
+     * Sets the current Cell being explored.
+     * 
+     * @param cur the current Cell being explored
+     */
+    public void setCur(Cell cur) {
+        this.cur = cur;
+    }
 }
