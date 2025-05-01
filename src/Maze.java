@@ -47,10 +47,10 @@ public class Maze implements Iterable<Cell> {
     private double density;
 
     /**
-     * The starting and ending Cells of this Maze. These are the Cells which
-     * represent the start and end of the path through the maze.
+     * The starting and target Cells of this Maze. These are the Cells that the
+     * algorithm will start and end at, respectively.
      */
-    private Cell start, end;
+    private Cell start, target;
 
     /**
      * The 2-D array of Cells making up this Maze.
@@ -71,6 +71,16 @@ public class Maze implements Iterable<Cell> {
         this.density = density;
         landscape = new Cell[rows][columns];
         reinitialize();
+
+        Random rand = new Random();
+        start = landscape[rand.nextInt(rows)][rand.nextInt(columns)];
+        while (start.getType() == CellType.OBSTACLE) {
+            start = landscape[rand.nextInt(rows)][rand.nextInt(columns)];
+        }
+        target = landscape[rand.nextInt(rows)][rand.nextInt(columns)];
+        while (target.getType() == CellType.OBSTACLE || start == target) {
+            target = landscape[rand.nextInt(rows)][rand.nextInt(columns)];
+        }
     }
 
     /**
