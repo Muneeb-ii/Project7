@@ -26,6 +26,11 @@ public class Cell {
     private CellType type;
 
     /**
+     * Specifies whether this Cell has been visited or not
+     */
+    private boolean visited;
+
+    /**
      * Constructs a Cell from the given parameters.
      * 
      * @param r    the row of the Cell
@@ -36,6 +41,8 @@ public class Cell {
         row = r;
         col = c;
         this.type = type;
+        prev = null;
+        visited = false;
     }
 
     /**
@@ -86,6 +93,24 @@ public class Cell {
      */
     public int getRow() {
         return row;
+    }
+
+    /**
+     * Returns whether this Cell has been visited or not.
+     *
+     * @return true if this Cell has been visited, false otherwise.
+     */
+    public boolean isVisited() {
+        return visited;
+    }
+
+    /**
+     * Sets whether this Cell has been visited or not.
+     * 
+     * @param visited true if this Cell has been visited, false otherwise.
+     */
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 
     /**
