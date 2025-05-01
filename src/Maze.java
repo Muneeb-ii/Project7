@@ -1,5 +1,5 @@
 /**
- * Author: (code provided by professor)
+ * Author: Muneeb Azfar Nafees (based on code provided by professor)
  * 
  * Purpose of class: A class that represents a maze. The maze is made up of cells
  * 
