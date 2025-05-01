@@ -84,6 +84,23 @@ public class Maze implements Iterable<Cell> {
     }
 
     /**
+     * Constructs a Maze with the given 2-D array of Cells. The starting and target
+     * Cells are set to the given {@code start} and {@code target} Cells,
+     * respectively.
+     * 
+     * @param grid   the 2-D array of Cells making up this Maze.
+     * @param start  the starting Cell of this Maze.
+     * @param target the target Cell of this Maze.
+     */
+    public Maze(Cell[][] grid, Cell start, Cell target){
+        this.rows = grid.length;
+        this.cols = grid[0].length;
+        this.landscape = grid;
+        this.start = start;
+        this.target = target;
+    }
+
+    /**
      * Initializes every Cell in the Maze.
      */
     public void reinitialize() {
@@ -174,7 +191,7 @@ public class Maze implements Iterable<Cell> {
     public int countVisitedCells() {
         int count = 0 ;
         for ( int i = 0 ; i < rows ; i ++ ) {
-            for ( int j = 0 ; j < rows ; j ++ ) { 
+            for ( int j = 0 ; j < cols ; j ++ ) { 
                 if ( get( i , j ).getPrev() != null ) {
                     count ++ ; 
                 }
