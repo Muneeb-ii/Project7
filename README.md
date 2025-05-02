@@ -40,19 +40,18 @@ MazeSearch implements and visualizes three classic pathfinding algorithms, Depth
 
 ```bash
 git clone https://github.com/Muneeb-ii/Searching_on_a_Grid.git
-cd Searching_on_a_Grid
-cd src/
+cd Searching_on_a_Grid/src
 javac *.java 
 ```
 
 ### Running the Simulation
 ```bash
 # Analysis only, no GUI:
-cd src 
+cd Searching_on_a_Grid/src
 java Simulation
 
 # Launch interactive GUI:
-cd src 
+cd Searching_on_a_Grid/extension
 java MazeSearchApp
 ```
 
@@ -67,20 +66,10 @@ src/
 ├── MazeBreadthFirstSearch.java
 ├── MazeAStarSearch.java
 ├── MazeSearchDisplay.java  # Swing canvas for animation
-├── MazeSearchApp.java      # Swing GUI launcher
 └── Simulation.java         # Automated experiments & reporting
 extension/
-├── CellType.java           # FREE / OBSTACLE enum
-├── Cell.java               # Cell model with visited/prev
-├── Maze.java               # Grid builder, neighbors, draw/reset
-├── AbstractMazeSearch.java # Base for DFS/BFS/A*/Wall-Follower
-├── MazeDepthFirstSearch.java
-├── MazeBreadthFirstSearch.java
-├── MazeAStarSearch.java
 ├── MazeWallFollowerSearch.java
-├── MazeSearchDisplay.java  # Swing canvas for animation
 ├── MazeSearchApp.java      # Swing GUI launcher
-└── Simulation.java         # Automated experiments & reporting
 
 ## Extensions
 - Wall-Follower: human-style right-hand rule walker with backtracking.
