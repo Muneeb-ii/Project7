@@ -35,7 +35,7 @@ public class MazeBreadthFirstSearch extends AbstractMazeSearch {
     }
 
     /**
-     * Finds the next cell to explore by popping the top cell from the queue.
+     * Finds the next cell to explore by popping the bottom cell from the queue.
      * 
      * @return the next cell to explore, or null if the queue is empty
      */
