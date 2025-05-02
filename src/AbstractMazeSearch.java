@@ -6,6 +6,9 @@
  * 
 */
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 abstract class AbstractMazeSearch {
     
     /**
@@ -144,7 +147,7 @@ abstract class AbstractMazeSearch {
      * @param target the target cell
      * @return the path from the starting cell to the target cell if it exists, null otherwise
      */
-    public LinkedList<Cell> search(Cell start, Cell target){
+    public LinkedList<Cell> search(Cell start, Cell target, boolean display, int delay){
         // Set the starting and target cells
         this.start = start;
         this.target = target;
@@ -184,4 +187,35 @@ abstract class AbstractMazeSearch {
 
         return null; // we couldn't find the target, but we're done
     }
+
+    /**
+     * Draws the maze and the path taken by the searcher.
+     * 
+     * @param g     the Graphics object used to draw the maze
+     * @param scale the scale at which to draw the maze
+     */
+    public void draw(Graphics g, int scale) {
+        // Draws the base version of the maze
+        getMaze().draw(g, scale);
+        // Draws the paths taken by the searcher
+        getStart().drawAllPrevs(getMaze(), g, scale, Color.RED);
+        // Draws the start cell
+        getStart().draw(g, scale, Color.BLUE);
+        // Draws the target cell
+        getTarget().draw(g, scale, Color.RED);
+        // Draws the current cell
+        getCur().draw(g, scale, Color.MAGENTA);
+    
+        // If the target has been found, draws the path taken by the searcher to reach
+        // the target sans backtracking.
+        if (getTarget().getPrev() != null) {
+            Cell traceBackCur = getTarget().getPrev();
+            while (!traceBackCur.equals(getStart())) {
+                traceBackCur.draw(g, scale, Color.GREEN);
+                traceBackCur = traceBackCur.getPrev();
+            }
+            getTarget().drawPrevPath(g, scale, Color.BLUE);
+        }
+    }
+
 }
