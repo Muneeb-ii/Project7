@@ -7,7 +7,6 @@
  */
 
 import java.util.Comparator;
-import javax.swing.border.MatteBorder;
 
 public class MazeAStarSearch extends AbstractMazeSearch {
     
