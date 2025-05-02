@@ -15,15 +15,22 @@ public class Simulation {
         for(int j = 0; j < 10; j++){
             double density = j/10.0;
             int count = 0;
+            int count2 = 0;
             for(int i = 0; i < 10; i++){
                 Maze maze = new Maze(20,20, density);
                 MazeAStarSearch astar = new MazeAStarSearch(maze);
                 if(astar.search(maze.getStart(), maze.getTarget(), false, 0) != null){
                     count++;
                 }
+                maze.reset();
+                MazeWallFollowerSearch wallFollower = new MazeWallFollowerSearch(maze);
+                if(wallFollower.search(maze.getStart(), maze.getTarget(), false, 0) != null){
+                    count2++;
+                }
             }
-            System.out.println("Density: " + density + " - Paths Found: " + count + " out of 10");
-            System.out.println("Probability: " + count/10.0 +"\n");
+            System.out.println("Density: " + density + "\n");
+            System.out.println("Astar Paths Found: " + count + " out of 10" + "| Probability: " + count/10.0 +"\n");
+            System.out.println("Wall Follower Paths Found: " + count2 + " out of 10" + "| Probability: " + count2/10.0 +"\n");
         }
     }
 
@@ -55,11 +62,17 @@ public class Simulation {
                 .search(maze.getStart(), maze.getTarget(), false, 0);
             int lenAstar = (pathAstar == null) ? 0 : pathAstar.size();
 
+            // Run Wall Follower on the same maze
+            LinkedList<Cell> pathWallFollower = new MazeWallFollowerSearch(maze)
+                .search(maze.getStart(), maze.getTarget(), false, 0);
+            int lenWallFollower = (pathWallFollower == null) ? 0 : pathWallFollower.size();
+
             System.out.println(
                 "Grid Size: " + size + " x " + size +
                 "\n Length of path (DFS): " + lenDfs +
                 "\n Length of path (BFS): " + lenBfs +
-                "\n Length of path (A*): " + lenAstar + "\n"
+                "\n Length of path (A*): " + lenAstar + 
+                "\n Length of path (WallSearcher): " + lenWallFollower + "\n"
             );
         }
     }
@@ -92,11 +105,17 @@ public class Simulation {
                 .search(maze.getStart(), maze.getTarget(), false, 0);
             int cellsExploredAstar = maze.countVisitedCells();
 
+            // Run Wall Follower on the same maze
+            LinkedList<Cell> pathWallFollower = new MazeWallFollowerSearch(maze)
+                .search(maze.getStart(), maze.getTarget(), false, 0);
+            int cellsExploredWallFollower = maze.countVisitedCells();
+
             System.out.println(
                 "Grid Size: " + size + " x " + size +
                 "\n Number of cells explored (DFS): " + cellsExploredDfs +
                 "\n Number of cells explored (BFS): " + cellsExploredBfs +
-                "\n Number of cells explored (A*): " + cellsExploredAstar + "\n"
+                "\n Number of cells explored (A*): " + cellsExploredAstar +
+                "\n Number of cells explored (WallSearcher): " + cellsExploredWallFollower + "\n"
             );
         }
     }
@@ -104,9 +123,9 @@ public class Simulation {
         Simulation simulation = new Simulation();
         System.out.println("Analysis 1: Density vs Probability of reaching target");
         simulation.analysisOne();
-        System.out.println("Analysis 2: Length of paths found by DFS, BFS, and A*");
+        System.out.println("Analysis 2: Length of paths found by DFS, BFS, A*, and Wall Follower");
         simulation.analysisTwo();
-        System.out.println("Analysis 3: Number of cells explored by DFS, BFS, and A*");
+        System.out.println("Analysis 3: Number of cells explored by DFS, BFS, A*, and Wall Follower");
         simulation.analysisThree();
     }
 }
