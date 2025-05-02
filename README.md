@@ -56,7 +56,7 @@ java MazeSearchApp
 ```
 
 ## Code Organization
-
+```Bash
 src/
 ├── CellType.java           # FREE / OBSTACLE enum
 ├── Cell.java               # Cell model with visited/prev
@@ -70,7 +70,7 @@ src/
 extension/
 ├── MazeWallFollowerSearch.java
 ├── MazeSearchApp.java      # Swing GUI launcher
-
+```
 ## Extensions
 - Wall-Follower: human-style right-hand rule walker with backtracking.
 - GUI: Swing interface to configure and visualize any search.
