@@ -26,8 +26,46 @@ public class Simulation {
             System.out.println("Probability: " + count/10.0 +"\n");
         }
     }
+
+    /**
+     * Compares the length of paths found by DFS, BFS, and A* search algorithms
+     * for different grid sizes - Analysis 2
+     */
+    public void analysisTwo() {
+        for (int i = 10; i <= 100; i += 10) {
+            int size = i;
+            double density = 0.2;
+
+            Maze maze = new Maze(size, size, density);
+
+            // Run DFS on the maze
+            LinkedList<Cell> pathDfs = new MazeDepthFirstSearch(maze)
+                .search(maze.getStart(), maze.getTarget(), false, 0);
+            int lenDfs = (pathDfs == null) ? 0 : pathDfs.size();
+            maze.reset();
+
+            // Run BFS on the same maze
+            LinkedList<Cell> pathBfs = new MazeBreadthFirstSearch(maze)
+                .search(maze.getStart(), maze.getTarget(), false, 0);
+            int lenBfs = (pathBfs == null) ? 0 : pathBfs.size();
+            maze.reset();
+
+            // Run A* on the same maze
+            LinkedList<Cell> pathAstar = new MazeAStarSearch(maze)
+                .search(maze.getStart(), maze.getTarget(), false, 0);
+            int lenAstar = (pathAstar == null) ? 0 : pathAstar.size();
+
+            System.out.println(
+                "Grid Size: " + size + " x " + size +
+                "\n Length of path (DFS): " + lenDfs +
+                "\n Length of path (BFS): " + lenBfs +
+                "\n Length of path (A*): " + lenAstar + "\n"
+            );
+        }
+    }
     public static void main(String[] args) {
         Simulation simulation = new Simulation();
         simulation.analysisOne();
+        simulation.analysisTwo();
     }
 }
