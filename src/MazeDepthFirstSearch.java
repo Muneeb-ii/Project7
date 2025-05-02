@@ -58,4 +58,10 @@ public class MazeDepthFirstSearch extends AbstractMazeSearch {
     public void updateCell(Cell cell){
         // No priority update needed for DFS
     }
+
+    public static void main(String[] args) {
+        Maze maze = new Maze(10, 10, 0.2);
+        MazeDepthFirstSearch dfs = new MazeDepthFirstSearch(maze);
+        dfs.search(maze.getStart(), maze.getTarget(), true, 100);
+    }
 }
