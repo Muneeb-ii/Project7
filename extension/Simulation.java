@@ -61,6 +61,7 @@ public class Simulation {
             LinkedList<Cell> pathAstar = new MazeAStarSearch(maze)
                 .search(maze.getStart(), maze.getTarget(), false, 0);
             int lenAstar = (pathAstar == null) ? 0 : pathAstar.size();
+            maze.reset();
 
             // Run Wall Follower on the same maze
             LinkedList<Cell> pathWallFollower = new MazeWallFollowerSearch(maze)
