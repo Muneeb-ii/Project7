@@ -126,6 +126,24 @@ abstract class AbstractMazeSearch {
     }
 
     /**
+     * Sets the starting cell of the maze.
+     * 
+     * @param start the starting cell of the maze
+     */
+    public void setStart(Cell start) {
+        this.start = start;
+    }
+
+    /**
+     * Sets the target cell of the maze.
+     * 
+     * @param target the target cell of the maze
+     */
+    public void setTarget(Cell target) {
+        this.target = target;
+    }
+
+    /**
      * Returns the path from the starting cell to the target cell if it exists.
      * 
      * @param cell the target cell
