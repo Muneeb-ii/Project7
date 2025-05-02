@@ -67,6 +67,7 @@ src/
 ├── MazeAStarSearch.java
 ├── MazeSearchDisplay.java  # Swing canvas for animation
 └── Simulation.java         # Automated experiments & reporting
+
 extension/
 ├── MazeWallFollowerSearch.java
 ├── MazeSearchApp.java      # Swing GUI launcher
@@ -77,15 +78,15 @@ extension/
 
 ## Acknowledgments
 - Original lab specifications and starter code by CS231 instructors.
-- Websites:
+- Oracle Swing Tutorial series:
   - [Trail: Creating a GUI With Swing – Oracle Java™ Tutorials](https://docs.oracle.com/javase/tutorial/uiswing/)
   - [How to Use BorderLayout – Oracle Java™ Tutorials](https://docs.oracle.com/javase/tutorial/uiswing/layout/border.html)
   - [How to Use Combo Boxes – Oracle Java™ Tutorials](https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html)
   - [How to Use Text Fields – Oracle Java™ Tutorials](https://docs.oracle.com/javase/tutorial/uiswing/components/textfield.html)
-  - [What does SwingUtilities.invokeLater do? – Stack Overflow](https://stackoverflow.com/questions/6567870/what-does-swingutilities-invokelater-do)
-  - [Enum (Java Platform SE 8) – Oracle Help Center](https://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html)
-  - [Pausing Execution with Sleep – Oracle Java™ Tutorials](https://docs.oracle.com/javase/tutorial/essential/concurrency/sleep.html)
-  - [Maze-solving algorithm – Wikipedia](https://en.wikipedia.org/wiki/Maze-solving_algorithm)
+- [What does SwingUtilities.invokeLater do? – Stack Overflow](https://stackoverflow.com/questions/6567870/what-does-swingutilities-invokelater-do)
+- [Enum (Java Platform SE 8) – Oracle Help Center](https://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html)
+- [Pausing Execution with Sleep – Oracle Java™ Tutorials](https://docs.oracle.com/javase/tutorial/essential/concurrency/sleep.html)
+- [Maze-solving algorithm – Wikipedia](https://en.wikipedia.org/wiki/Maze-solving_algorithm)
 
 # License
-This project is released under the MIT License.
+This project is released under the [MIT License](LICENSE.MD)
