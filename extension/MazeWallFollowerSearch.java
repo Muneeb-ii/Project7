@@ -113,6 +113,7 @@ public class MazeWallFollowerSearch extends AbstractMazeSearch {
 
         // Walk until no frontier or target found
         while (numRemainingCells() > 0) {
+            boolean moved = false;
             Cell cur = findNextCell();
             setCur(cur);
 
@@ -130,18 +131,34 @@ public class MazeWallFollowerSearch extends AbstractMazeSearch {
                 }
                 int newRow = cur.getRow() + dir.dr;
                 int newCol = cur.getCol() + dir.dc;
-                if ((getMaze().getRows() > newRow && newRow >= 0) &&
-                (getMaze().getCols() > newCol && newCol >= 0) && 
-                getMaze().get(newRow, newCol).getType() == CellType.FREE) 
+                if (newRow >= 0 && newRow < getMaze().getRows() &&
+                    newCol >= 0 && newCol < getMaze().getCols() &&
+                    getMaze().get(newRow, newCol).getType() == CellType.FREE) 
                 {
                     Cell next = getMaze().get(newRow, newCol);
                     if (!next.visited()) {
                         next.setPrev(cur);
                         facing = dir;
                         addCell(next);
+                        moved = true;
+                        break; // only break when we move to a new cell
                     }
-                    break;
+                    // if already visited, try the next direction
                 }
+            }
+
+            if (!moved) {
+                // backtrack to previous cell
+                Cell back = cur.getPrev();
+                if (back == start) {
+                    // no alternative path, give up
+                    return null;
+                }
+                setCur(back);
+                frontier.clear();
+                frontier.add(back);
+                // continue walking from the backtracked cell
+                continue;
             }
 
             if (cur.equals(target)) {
