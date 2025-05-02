@@ -159,6 +159,14 @@ abstract class AbstractMazeSearch {
 
         addCell(start);
 
+        // Create a null display window
+        MazeSearchDisplay displayWindow = null;
+
+        // If display is true, create a new display window
+        if(display){
+            displayWindow = new MazeSearchDisplay(this, 20);
+        }
+
         // While there are still cells to explore
         while(numRemainingCells()>0){
             // Set the current cell to the next cell to explore
@@ -182,6 +190,14 @@ abstract class AbstractMazeSearch {
                 if(neighbor == target){
                     return traceback(target);
                 }
+            }
+
+            // if display is true, repaint the display window
+            if(display){
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e){}
+                displayWindow.repaint();
             }
         }
 
