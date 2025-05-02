@@ -11,21 +11,19 @@ public class Simulation {
      * probability of reaching the target - Analysis 1
      */
     public void analysisOne(){
-        double density = 0.0;
 
-        while (density <= 1.0){
+        for(int j = 0; j < 10; j++){
+            double density = j/10.0;
             int count = 0;
             for(int i = 0; i < 10; i++){
                 Maze maze = new Maze(20,20, density);
                 MazeAStarSearch astar = new MazeAStarSearch(maze);
-                astar.search(maze.getStart(), maze.getTarget(), false, 0);
-                if(astar.traceback(astar.getTarget()) != null){
+                if(astar.search(maze.getStart(), maze.getTarget(), false, 0) != null){
                     count++;
                 }
             }
             System.out.println("Density: " + density + " - Paths Found: " + count + " out of 10");
-            System.out.println("Probability" + count/10.0);
-            density += 0.1;
+            System.out.println("Probability: " + count/10.0 +"\n");
         }
     }
     public static void main(String[] args) {
