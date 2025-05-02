@@ -150,4 +150,10 @@ public class MazeWallFollowerSearch extends AbstractMazeSearch {
         }
         return null;
     }
+
+    public static void main(String[] args){
+        Maze maze = new Maze(10, 10, 0.2);
+        MazeWallFollowerSearch wallFollower = new MazeWallFollowerSearch(maze);
+        wallFollower.search(maze.getStart(), maze.getTarget(), true, 100);
+    }
 }
