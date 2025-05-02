@@ -63,9 +63,50 @@ public class Simulation {
             );
         }
     }
+
+    /**
+     * Compares the number of cells explored by DFS, BFS, and A* search algorithms
+     * for different grid sizes - Analysis 3
+     */
+    public void analysisThree() {
+        for (int i = 10; i <= 100; i += 10) {
+            int size = i;
+            double density = 0.2;
+
+            Maze maze = new Maze(size, size, density);
+
+            // Run DFS on the maze
+            LinkedList<Cell> pathDfs = new MazeDepthFirstSearch(maze)
+                .search(maze.getStart(), maze.getTarget(), false, 0);
+            int cellsExploredDfs = maze.countVisitedCells();
+            maze.reset();
+
+            // Run BFS on the same maze
+            LinkedList<Cell> pathBfs = new MazeBreadthFirstSearch(maze)
+                .search(maze.getStart(), maze.getTarget(), false, 0);
+            int cellsExploredBfs = maze.countVisitedCells();
+            maze.reset();
+
+            // Run A* on the same maze
+            LinkedList<Cell> pathAstar = new MazeAStarSearch(maze)
+                .search(maze.getStart(), maze.getTarget(), false, 0);
+            int cellsExploredAstar = maze.countVisitedCells();
+
+            System.out.println(
+                "Grid Size: " + size + " x " + size +
+                "\n Number of cells explored (DFS): " + cellsExploredDfs +
+                "\n Number of cells explored (BFS): " + cellsExploredBfs +
+                "\n Number of cells explored (A*): " + cellsExploredAstar + "\n"
+            );
+        }
+    }
     public static void main(String[] args) {
         Simulation simulation = new Simulation();
+        System.out.println("Analysis 1: Density vs Probability of reaching target");
         simulation.analysisOne();
+        System.out.println("Analysis 2: Length of paths found by DFS, BFS, and A*");
         simulation.analysisTwo();
+        System.out.println("Analysis 3: Number of cells explored by DFS, BFS, and A*");
+        simulation.analysisThree();
     }
 }
