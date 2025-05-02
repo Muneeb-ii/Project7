@@ -133,7 +133,7 @@ abstract class AbstractMazeSearch {
      */
     public LinkedList<Cell> traceback(Cell cell){
         LinkedList<Cell> path = new LinkedList<Cell>();
-        while (cell!=null){
+        while (cell!=start){
             path.add(cell); // add the cell to the path
             cell = cell.getPrev();
         }
